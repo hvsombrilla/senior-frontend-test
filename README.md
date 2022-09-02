@@ -31,7 +31,7 @@ This repository corresponds to a test for the Senior Frontend Developer position
 |Toggle open/close office cards | ✔️ Completed |
 |“Add new location” (add new office to list) | ✔️ Completed |
 |“Edit office” (edit and save office data) | ✔️ Completed |
-|While adding or editing an office, the “Save” button should be disabled until all fields have been validated | ❎ Pending |
+|While adding or editing an office, the “Save” button should be disabled until all fields have been validated | ✔️ Pending |
 |“Delete office” (remove office from list) | ✔️ Completed |
 
 

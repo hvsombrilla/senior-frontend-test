@@ -1,8 +1,8 @@
 ![Dog and Pony Studios](https://www.dogandponystudios.com/app/themes/dps/assets/public/images/logo-fbe89868bd.svg)
 
-# Senior Frontend Developer Test
+# Henry Valdez / Senior Frontend Developer Test
 
-**Welcome to our Senior Frontend Developer Test**
+** **
 
 This test consists of a series of tasks which may take between 2–4 hours to complete, depending on your experience level. The primary purpose of this test is to infer your “logical thinking” and “problem-solving” skills.
 
@@ -13,16 +13,18 @@ To recreate the design and functionality of a generic office-listings page. Plea
 
 
 ## Tasks
+Table
+Task | Status
+Fork this repository (to jump-start your test) |  Completed
+Recreate [the design](https://www.figma.com/file/VU2BJHrMmoSEdQmMa1EbYP/Front-end-Test?node-id=2253%3A2129) using [Vue.js](https://vuejs.org/) and [TailwindCSS](https://tailwindcss.com/) | Completed
+Populate the office listings from a datasource (JSON or hard-coded array) | Completed
+Recreate the following interactivity | Completed
+Toggle open/close office cards | Completed
+“Add new location” (add new office to list) | Completed
+“Edit office” (edit and save office data) | Completed
+While adding or editing an office, the “Save” button should be disabled until all fields have been validated | Completed
+“Delete office” (remove office from list) | Completed
 
-1. Fork this repository (to jump-start your test)
-1. Recreate [the design](https://www.figma.com/file/VU2BJHrMmoSEdQmMa1EbYP/Front-end-Test?node-id=2253%3A2129) using [Vue.js](https://vuejs.org/) and [TailwindCSS](https://tailwindcss.com/)
-1. Populate the office listings from a datasource (JSON or hard-coded array)
-1. Recreate the following interactivity
-    1. Toggle open/close office cards
-    1. “Add new location” (add new office to list)
-    1. “Edit office” (edit and save office data)
-    1. While adding or editing an office, the “Save” button should be disabled until all fields have been validated
-    1. “Delete office” (remove office from list)
 
 ## Project Setup Instructions
 
@@ -32,19 +34,3 @@ Install Dependencies: `npm install`
 
 Run in dev mode: `npm run dev`
 
-## Tips
-
-- Keep it simple
-- Data persistence is not required
-- Please ensure your readme file contains valid and simple instructions
-- Please use placeholder data only (i.e. do not use real or identifiable information)
-- Feel free to validate fields according to your own validation logic
-- Verify the full functionality of your application prior to submission
-
-## Deadline
-
-You´ll have up to 7 consecutive days to work on the test. Please submit your test as a Github repository URL, along with a readme file containing instructions on how to set up and run your application. If you'd like to submit a _private repository_, please add [Fez](https://github.com/felipesnts) and [Bill](https://github.com/billaddison) with view access to the private repository.
-
-## Submissions
-
-# [Submit your test here →](https://forms.gle/RU1EPST4j9Dwg2oG6)

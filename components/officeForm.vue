@@ -1,6 +1,7 @@
 <template>
 	<form class="bg-white mt-5" @submit.prevent="sendData()">
 		<FormField
+			ref="title"
 			label="Title"
 			placeholder="Ej: Office 1"
 			:value="editingData.title"
@@ -14,6 +15,7 @@
 		></FormField>
 
 		<FormField
+			ref="address"
 			label="Enter the address"
 			placeholder="Ej: XYZ Street, New York, USA"
 			:value="editingData.address"
@@ -30,6 +32,7 @@
 		<hr class="my-4" />
 
 		<FormField
+			ref="name"
 			label="Full Name"
 			placeholder="Ej: John Doe"
 			:value="editingData.contact.name"
@@ -43,6 +46,7 @@
 		></FormField>
 
 		<FormField
+			ref="position"
 			label="Job Position"
 			placeholder="Job Position"
 			:value="editingData.contact.position"
@@ -56,6 +60,7 @@
 		></FormField>
 
 		<FormField
+			ref="email"
 			label="Email address"
 			placeholder="Ej: jhon.doe@xyz.com"
 			type="email"
@@ -70,6 +75,7 @@
 		></FormField>
 
 		<FormField
+			ref="phone"
 			label="Phone Number"
 			placeholder="Phone Number"
 			type="tel"
@@ -85,8 +91,9 @@
 
 		<div class="flex items-center justify-between">
 			<button
-				@click="sendData()"
-				class="bg-cyan-600 hover:bg-cyan-500 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+				type="submit"
+				:disabled="!formIsValid"
+				class="bg-cyan-600 hover:bg-cyan-500 disabled:bg-gray-400 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 			>
 				Save
 			</button>
@@ -95,6 +102,7 @@
 </template>
 
 <script>
+import { ref } from "vue";
 import FormField from "./elements/formField.vue";
 
 export default {
@@ -114,14 +122,14 @@ export default {
 		} else {
 			edata = JSON.parse(JSON.stringify(this.office));
 		}
-		console.log(edata);
+
 		return {
 			showValidations: false,
 			isOpen: false,
 			isRemoved: false,
 			editingData: edata,
 			isEditing: isEditing,
-			formIsValid: true,
+			formIsValid: false
 		};
 	},
 	props: {
@@ -139,7 +147,6 @@ export default {
 	},
 	methods: {
 		updateEditingData(key, value) {
-			let contactProps = ["name", "position", "phone", "email"];
 			let officeProps = ["title", "address"];
 
 			if (officeProps.includes(key)) {
@@ -147,17 +154,41 @@ export default {
 			} else {
 				this.editingData.contact[key] = value;
 			}
+
+			this.validate();
+		},
+		validate(){
+			this.$refs.title.validate();
+			this.$refs.address.validate();
+			this.$refs.name.validate();
+			this.$refs.position.validate();
+			this.$refs.email.validate();
+			this.$refs.phone.validate();
+
+			this.formIsValid = (this.$refs.title.isValid && this.$refs.address.isValid && this.$refs.name.isValid && this.$refs.position.isValid && this.$refs.email.isValid && this.$refs.phone.isValid);
+		
 		},
 		sendData() {
-			this.showValidations = true;
-			console.log("data", this.editingData);
 
-			// if (this.isEditing) {
-			// 	this.editOfficeFunt(this.editingData, this.index);
-			// 	this.toggle();
-			// } else {
-			// 	this.createOfficeFunt(this.editingData);
-			// }
+			console.log("send data");
+			this.showValidations = true;
+
+			this.validate();
+
+			//wait for validation to finish
+			setTimeout(() => {
+				if (this.formIsValid) {
+					if (this.isEditing) {
+						this.editOfficeFunt(this.editingData, this.index);
+						this.toggle();
+					} else {
+						this.createOfficeFunt(this.editingData);
+					}
+					
+				}
+			}, 500);
+
+
 		},
 	},
 	components: { FormField },

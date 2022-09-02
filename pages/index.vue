@@ -68,7 +68,7 @@
 				:isSelected="activeTab === index"
 				@remove="removeOffice(index)"
 				:editOffice="(var1, var2) => updateOffice(var1, var2)"
-				:createOfficeFunt="(var1) => createOffice(var1)"
+				:createOfficeFunt="(var1) => {createOffice(var1)}"
 				:deleteOffice="(var1) => deleteOffice(var1)"
 				@toggle="selectOffice(index)"
 			></OfficeCard>
@@ -104,49 +104,51 @@ export default {
 		OfficeCard,
 	},
 	data() {
+		let officesDefaultData = [
+			{
+				title: "Headquarters",
+				address: "32nd Street, New York, USA",
+				contact: {
+					name: "Hellena Johns",
+					position: "Director",
+					phone: "+591 778-12345",
+					email: "main@test.com",
+				},
+			},
+			{
+				title: "Alternative Second Office",
+				address: "32nd Street, New York, USA",
+				contact: {
+					name: "Hellena Johns",
+					position: "Director",
+					phone: "+591 778-12345",
+					email: "main@test.com",
+				},
+			},
+			{
+				title: "Alternative Second Office",
+				address: "32nd Street, New York, USA",
+				contact: {
+					name: "Hellena Johns",
+					position: "Director",
+					phone: "+591 778-12345",
+					email: "main@test.com",
+				},
+			},
+			{
+				title: "Alternative Second Office",
+				address: "32nd Street, New York, USA",
+				contact: {
+					name: "Hellena Johns",
+					position: "Director",
+					phone: "+591 778-12345",
+					email: "main@test.com",
+				},
+			},
+		];
+
 		return {
-			offices: [
-				{
-					title: "Headquarters",
-					address: "32nd Street, New York, USA",
-					contact: {
-						name: "Hellena Johns",
-						position: "Director",
-						phone: "+591 778-12345",
-						email: "main@test.com",
-					},
-				},
-				{
-					title: "Alternative Second Office",
-					address: "32nd Street, New York, USA",
-					contact: {
-						name: "Hellena Johns",
-						position: "Director",
-						phone: "+591 778-12345",
-						email: "main@test.com",
-					},
-				},
-				{
-					title: "Alternative Second Office",
-					address: "32nd Street, New York, USA",
-					contact: {
-						name: "Hellena Johns",
-						position: "Director",
-						phone: "+591 778-12345",
-						email: "main@test.com",
-					},
-				},
-				{
-					title: "Alternative Second Office",
-					address: "32nd Street, New York, USA",
-					contact: {
-						name: "Hellena Johns",
-						position: "Director",
-						phone: "+591 778-12345",
-						email: "main@test.com",
-					},
-				},
-			],
+			offices: officesDefaultData,
 			activeTab: null,
 			editingTab: null,
 			showNewForm: false,
@@ -158,7 +160,7 @@ export default {
 		},
 
 		selectOffice(index) {
-			console.log("New Active Tab: ", this.activeTab);
+
 			if (index == this.activeTab) {
 				this.activeTab = null;
 			} else {
@@ -172,18 +174,12 @@ export default {
 		},
 
 		updateOffice(data, index) {
-			console.log("soy update", data, index);
 			this.offices[index] = { ...data };
 		},
 
 		deleteOffice(index) {
 			this.activeTab = null;
 			this.offices.splice(index, 1);
-			this.saveData();
-		},
-		saveData() {
-			const storageData = JSON.stringify(this.offices);
-			localStorage.setItem("offices", storageData);
 		},
 	},
 };

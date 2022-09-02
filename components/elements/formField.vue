@@ -6,20 +6,21 @@
 			<input
 				class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 				:type="type"
-                :class="{ 'border-red-500': !this.isValid }"
+                :class="{ 'border-red-500': (!this.isValid && this.showValidations ) }"
 				:value="value"
 				:placeholder="placeholder"
-                @focusout="validate()"
+                @focusout="() => {
+                    this.showValidations = true;
+                    validate();
+                    }"
 				@input="
-                    (event) => {
-
-                        this.validate();
-                        this.$emit('input', event.target.value);
+                    (event) => {                  
+                        this.$emit('input', event.target.value);                        
                     }"
                 
 			/>
 
-            <ul>
+            <ul v-if="this.showValidations">
                 <li class="text-red-500 text-xs italic"  v-for="(error, index) in errors" :key="index">{{ error }}</li>
             </ul>
 
@@ -33,8 +34,8 @@ export default {
 	name: "FormField",
 	data() {
 		return {
-            isValid: ref(true),
-            errors: ref([]),
+            isValid: false,
+            errors: [],
         };
 	},
 	props: {
@@ -72,11 +73,20 @@ export default {
             return re.test(String(email).toLowerCase());
 
         },
+
+        isValidPhone(phone){
+            let msg = "";
+            let re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+            console.log("telefono", phone, re.test(String(phone)));
+            return re.test(String(phone));
+        },
+
         validate() {
 
             let errors = [];
 
-            if (!this.showValidations) { return }
+           // if (!this.showValidations) { return }
 
             let valid = true;
 
@@ -87,6 +97,14 @@ export default {
                     errors.push("Must be a valid email address");
                 } 
             }
+
+            if (this.type === "tel") {
+                if (! this.isValidPhone(this.value) ) {
+                    valid = false;
+                    errors.push("Must be a valid phone number");
+                }
+            }
+
 
             if(this.value === "" && this.required) {
                 valid = false;

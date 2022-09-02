@@ -109,42 +109,33 @@ export default {
 				title: "Headquarters",
 				address: "32nd Street, New York, USA",
 				contact: {
-					name: "Hellena Johns",
+					name: "Peter Parker",
 					position: "Director",
-					phone: "+591 778-12345",
+					phone: "+591 123-456-7899",
 					email: "main@test.com",
 				},
 			},
 			{
-				title: "Alternative Second Office",
-				address: "32nd Street, New York, USA",
+				title: "Alternative Office",
+				address: "2nd Street, New York, USA",
 				contact: {
-					name: "Hellena Johns",
-					position: "Director",
-					phone: "+591 778-12345",
+					name: "Julia Roberts",
+					position: "Lead Developer",
+					phone: "+591 778-1234",
 					email: "main@test.com",
 				},
 			},
 			{
-				title: "Alternative Second Office",
-				address: "32nd Street, New York, USA",
+				title: "Offshore Office",
+				address: "65nd Street, Florida, USA",
 				contact: {
-					name: "Hellena Johns",
-					position: "Director",
-					phone: "+591 778-12345",
+					name: "John Doe",
+					position: "Second Developer",
+					phone: "+591 778-1234",
 					email: "main@test.com",
 				},
 			},
-			{
-				title: "Alternative Second Office",
-				address: "32nd Street, New York, USA",
-				contact: {
-					name: "Hellena Johns",
-					position: "Director",
-					phone: "+591 778-12345",
-					email: "main@test.com",
-				},
-			},
+
 		];
 
 		return {

@@ -69,17 +69,12 @@ export default {
 	methods: {
         isValidEmail(email) {
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            let msg = "";
             return re.test(String(email).toLowerCase());
-
         },
 
         isValidPhone(phone){
-            let msg = "";
-            let re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-
-            console.log("telefono", phone, re.test(String(phone)));
-            return re.test(String(phone));
+            if(phone === ''){return false}
+            return (phone.match(/\d/g).length > 9);
         },
 
         validate() {
